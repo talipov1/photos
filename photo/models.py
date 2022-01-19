@@ -50,7 +50,7 @@ class Photo(models.Model):
     slogan = models.CharField("Слоган", max_length=150, default='')
     description = models.TextField("Описание")
     image = models.ImageField("Изображение", upload_to="фото/")
-    year = models.PositiveSmallIntegerField("Дата", default='1999')
+    year = models.DateTimeField("Дата", null=True)
     location = models.CharField("Местоположение", max_length=150)
     operator = models.ManyToManyField(Actor, verbose_name="Оператор", related_name="photo_operator")
     actor = models.ManyToManyField(Actor, verbose_name="Актер", related_name="photo_actor")
