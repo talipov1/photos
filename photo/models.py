@@ -1,6 +1,9 @@
 from django.db import models
 from datetime import date
 
+from django.urls import reverse
+
+
 class Categories(models.Model):
     '''категории'''
     name = models.CharField("Имя", max_length=150)
@@ -61,6 +64,9 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("photo_detail", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Фото"
